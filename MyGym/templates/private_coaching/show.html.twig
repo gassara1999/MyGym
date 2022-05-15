@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PrivateCoaching{% endblock %}
+
+{% block body %}
+    <h1>PrivateCoaching</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ private_coaching.id }}</td>
+            </tr>
+            <tr>
+                <th>DateSession</th>
+                <td>{{ private_coaching.DateSession ? private_coaching.DateSession|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>BeginHour</th>
+                <td>{{ private_coaching.beginHour }}</td>
+            </tr>
+            <tr>
+                <th>EndHour</th>
+                <td>{{ private_coaching.EndHour }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ private_coaching.date ? private_coaching.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_private_coaching_index') }}">back to list</a>
+
+    <a href="{{ path('app_private_coaching_edit', {'id': private_coaching.id}) }}">edit</a>
+
+    {{ include('private_coaching/_delete_form.html.twig') }}
+{% endblock %}

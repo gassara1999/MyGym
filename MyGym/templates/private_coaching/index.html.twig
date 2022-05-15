@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PrivateCoaching index{% endblock %}
+
+{% block body %}
+    <h1>Private Coaching </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date of the Session</th>
+                <th>Begin Hour</th>
+                <th>End Hour</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for private_coaching in private_coachings %}
+            <tr>
+                <td>{{ private_coaching.id }}</td>
+                <td>{{ private_coaching.DateSession ? private_coaching.DateSession|date('Y-m-d') : '' }}</td>
+                <td>{{ private_coaching.beginHour }}</td>
+                <td>{{ private_coaching.EndHour }}</td>
+                <td>{{ private_coaching.date ? private_coaching.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_private_coaching_show', {'id': private_coaching.id}) }}">show</a>
+                    <a href="{{ path('app_private_coaching_edit', {'id': private_coaching.id}) }}">edit</a>
+                    <a href="{{ path('app_private_coaching_delete', {'id': private_coaching.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_private_coaching_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MembershipType{% endblock %}
+
+{% block body %}
+    <h1>MembershipType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ membership_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ membership_type.Type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ membership_type.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_membership_type_index') }}">back to list</a>
+
+    <a href="{{ path('app_membership_type_edit', {'id': membership_type.id}) }}">edit</a>
+
+    {{ include('membership_type/_delete_form.html.twig') }}
+{% endblock %}
